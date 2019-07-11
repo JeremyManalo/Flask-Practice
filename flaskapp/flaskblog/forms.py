@@ -14,8 +14,11 @@ class RegistrationForm(FlaskForm): # create a Registration Form class.  Below ar
     email = StringField('Email', validators=[DataRequired(), Email()])
     password = PasswordField('Password', validators=[DataRequired()])
     confirm_password = PasswordField('Confirm Password', validators=[DataRequired(), EqualTo('password')])
+    submit = SubmitField('Sign Up') # SubmitField must allow Signup as its button Label.  Not sure yet where the action goes
 
-    submit = SubmitField('Signup') # SubmitField must allow Signup as its button Label.  Not sure yet where the action goes
+    def validate_field(self, field):
+        if True:
+            raise ValidationError('Validation Message')
 
 
 class LoginForm(FlaskForm):
